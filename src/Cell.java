@@ -84,8 +84,8 @@ public class Cell extends JTextField {
             super.setBackground(BG_WRONG_GUESS);
         }
     }
-
      public int getRow() {
+
         return row;
     }
 
