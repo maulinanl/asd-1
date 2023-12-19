@@ -1,3 +1,13 @@
+/**
+ * ES234317-Algorithm and Data Structures
+ * Semester Ganjil, 2023/2024
+ * Group Capstone Project
+ * Group #9
+ * 1 - 5026221131 - Maulina Nur Laila
+ * 2 - 5026221172 - Arya Putra Tsabitah Firjatulloh
+ * 3 - 5026221179 - Kadek Mawar Kumala Dewi
+ */
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -36,24 +46,5 @@ public class AboutUs extends JDialog {
 
         add(panel, BorderLayout.CENTER);
         add(closeButton, BorderLayout.SOUTH);
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame();
-            JButton openButton = new JButton("Open AboutUs Dialog");
-
-            openButton.addActionListener(e -> {
-                AboutUs aboutUs = new AboutUs(frame);
-                aboutUs.setVisible(true);
-            });
-
-            frame.setLayout(new FlowLayout());
-            frame.add(openButton);
-            frame.setSize(400, 300);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setLocationRelativeTo(null);
-            frame.setVisible(true);
-        });
     }
 }

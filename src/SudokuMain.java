@@ -10,6 +10,8 @@
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -28,6 +30,10 @@ public class SudokuMain extends JFrame {
     private int seconds;
     private Object mainPanel;
 
+    public static void quitActionPerformed(ActionEvent evt){
+        System.exit(0);
+    }
+
     // Constructor
     public SudokuMain() {
         JOptionPane.showMessageDialog(null, "Welcome! click OK to start game! Sudoko");
@@ -43,23 +49,31 @@ public class SudokuMain extends JFrame {
         buttonPanel.add(btnNewGame);
         buttonPanel.add(timerLabel);
         cp.add(buttonPanel, BorderLayout.EAST);
+
         // Create menu bar
         JMenuBar menuBar = new JMenuBar();
+        JMenu menu = new JMenu("Menu");
+        JMenuItem aboutUsItem = new JMenuItem("About Us");
+        JMenuItem quit = new JMenuItem("Quit");
         setJMenuBar(menuBar);
 
-        // Create "About Us" menu
-        JMenu aboutMenu = new JMenu("About");
-        menuBar.add(aboutMenu);
-
-        // Create "About Us" menu item
-        JMenuItem aboutUsItem = new JMenuItem("About Us");
-        aboutMenu.add(aboutUsItem);
+        // Add to menuBar
+        menuBar.add(menu);
+        menu.add(aboutUsItem);
+        menu.add(quit);
 
         // Add action listener to "About Us" menu item
         aboutUsItem.addActionListener(e -> showAboutUsDialog());
 
         //Menambahkan action listener untuk tombol "New Game" yang akan memanggil metode startNewGame().
         btnNewGame.addActionListener(e -> startNewGame());
+
+        // Add action listener to quit
+        quit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                SudokuMain.quitActionPerformed(e);
+            }
+        });
 
         // Initialize the game board and timer
         initializeTimer();
