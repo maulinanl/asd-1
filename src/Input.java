@@ -24,11 +24,11 @@ class Input extends PlainDocument {
         if (str.matches("\\d+")) {
             if (!str.equals("0") && (getLength() + str.length()) <= limit) {
                 super.insertString(offset, str, attr);
-            } else if{
-                showWarningDialog("Input tidak boleh 0.");
             } else {
-            showWarningDialog("Input harus berupa angka.");
+                showWarningDialog("Input tidak boleh 0 atau melebihi batas.");
             }
+        } else {
+            showWarningDialog("Input harus berupa angka.");
         }
     }
 
