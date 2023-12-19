@@ -22,7 +22,7 @@ class Input extends PlainDocument {
 
         // Only allow digits
         if (str.matches("\\d+")) {
-            if ((getLength() + str.length()) <= limit) {
+            if (!str.equals("0") && (getLength() + str.length()) <= limit) {
                 super.insertString(offset, str, attr);
             }
         }
