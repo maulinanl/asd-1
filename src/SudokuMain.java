@@ -29,6 +29,7 @@ public class SudokuMain extends JFrame {
     private Timer timer;
     private int seconds;
     private Object mainPanel;
+    Input input = new Input(9);
 
     public static void quitActionPerformed(ActionEvent evt){
         System.exit(0);
@@ -74,6 +75,14 @@ public class SudokuMain extends JFrame {
                 SudokuMain.quitActionPerformed(e);
             }
         });
+
+        //Menambahkan action listener untuk tombol "New Game" yang akan memanggil metode startNewGame().
+        btnNewGame.addActionListener(e -> startNewGame());
+        if (input.textField.getText().matches("\\d+")) {
+            startNewGame();
+        } else {
+            JOptionPane.showMessageDialog(null, "Please enter a number between 1 and 9", "Input Error", JOptionPane.ERROR_MESSAGE);
+        }
 
         // Initialize the game board and timer
         initializeTimer();
