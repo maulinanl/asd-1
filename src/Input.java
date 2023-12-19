@@ -1,11 +1,9 @@
 import javax.swing.*;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.PlainDocument;
+import javax.swing.text.*;
 import java.text.NumberFormat;
 
-public class Input extends PlainDocument {
-    JFormattedTextField textField;
+class Input extends PlainDocument {
+    private JFormattedTextField textField;
     private int limit;
 
     Input(int limit) {
@@ -17,16 +15,16 @@ public class Input extends PlainDocument {
 
     @Override
     public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException {
+
         if (str == null) {
             return;
         }
 
+        // Only allow digits
         if (str.matches("\\d+")) {
             if ((getLength() + str.length()) <= limit) {
                 super.insertString(offset, str, attr);
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Please enter a number between 1 and 9", "Input Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 }
