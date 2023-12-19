@@ -45,6 +45,8 @@ public class Cell extends JTextField {
         // Inherited from JTextField: Beautify all the cells once for all
         super.setHorizontalAlignment(JTextField.CENTER);
         super.setFont(FONT_NUMBERS);
+        Input InputCell = new Input(1); // Sesuaikan dengan limit yang diinginkan
+        setDocument(InputCell);
     }
 
      public Cell(int row, int col, int value) {
